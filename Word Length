@@ -1,0 +1,34 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+longestword := "I went to my house and got my bag and then left"
+	LongestWord(longestword)
+}
+func LongestWord(sen string){
+var array [] string
+maxlength := 0;
+arrayi := 0; 
+//spits the string into seperate words
+array = strings.Split(sen, " ")
+
+//loops through all of the words in the array
+for i := 0;i < len(array);i++{
+	
+	//saves the current length of the word
+        currentnumber := len(array[i])
+	//compares the current word length to the current longest word
+	if(currentnumber > maxlength){
+	//if the current word is longer than the current longest word, than it makes the word the new longest and saves where it is in the array 
+	maxlength=currentnumber
+	arrayi = i;
+	}
+	
+	
+}
+fmt.Print(array[arrayi])
+}
