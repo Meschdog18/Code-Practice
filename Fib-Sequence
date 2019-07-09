@@ -1,0 +1,38 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+	"strings"
+	)
+
+func main() {
+	current := 1;
+	previous := 0;
+	sum :=0
+	loop:=0;
+	negative := "-";  
+	 
+		fmt.Println(sum)
+	for loop <= 98{
+		loop++;
+		
+		
+		sum = current + previous 
+		current = previous
+		previous = sum
+		
+		stringsum := strconv.Itoa(sum)
+		if(strings.Contains(stringsum, negative)){
+			result := strings.Replace(stringsum,"-","", -1)
+					fmt.Println(result)
+
+		}else{
+		fmt.Println(sum)
+		}
+		
+		
+		
+	}
+	
+}
