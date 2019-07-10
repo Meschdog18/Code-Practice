@@ -35,7 +35,7 @@ fmt.Println(len(numbers))
 
 for i := range(numbers) {
  	
-
+numi =0;
 for tru:=0;tru == 0;{
 	//trys to find number without 4 by subtracting its value by numi(which increase by one each loop)
 	holdi = numbers[i] - numi
