@@ -18,7 +18,7 @@ file, _:=os.Open("input.txt")
 scanner := bufio.NewScanner(file)
 for scanner.Scan(){
 	line := scanner.Text()
-    converts string from txt file to ints 
+    //converts string from txt file to ints 
     lineint, _:= strconv.Atoi(line) 
     //adds each line of numbers to the array
 	numbers = append(numbers, lineint)
