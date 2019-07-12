@@ -5,45 +5,110 @@ import(
 	"os"
 	"strconv"
 	"strings"
-	"math"
+	//"math"
 )
 
 func main(){
-	filereader()
-	
+	sendN, NUMB:=filereader()
+	primefinder(sendN)
+	oddprimes := primefinder(sendN)
+	decrypter(oddprimes,NUMB)
 }
-func primefinder(N int){
+func primefinder(N int)(oddprimes []int){
 //var primecheck int
 //first odd prime should be 1 but it starts off at 3
 //var oddprimes []int
+var divisible float64
+var l float64
+//var primenumbers[]int
+//appending all the primes that get multiplied out
+oddprimes = append(oddprimes,3)
+oddprimes = append(oddprimes,5)
+oddprimes = append(oddprimes,7)
+for i:=0;i<=N;i++{
+		
+		//follows the Sieve of Eratosthenes
+		//each layer has a divisble value, and if the number's decimal doesnt contain 0 (which would point to a whole number), than it gets passed through another filter until it makes it to the end and is added as a prime
+		//the deceimal value(yeah i know i spelled it wrong), is used to just compare the decimal's value not the whole number left over after division
 
 
+		divisible = 2
+		
+		contain := fmt.Sprintf("%.1f",l/divisible)
+		
+		deceimal := strings.SplitAfter(contain,".")
+		if(strings.Contains(deceimal[1],"0")!=true){
+			divisible = 3
+			contain2 := fmt.Sprintf("%.1f",l/divisible)
+			deceimal2 := strings.SplitAfter(contain2,".")
+			if(strings.Contains(deceimal2[1],"0")!=true){
+				divisible = 5
+				contain3 := fmt.Sprintf("%.1f", l/divisible)
+				deceimal3 := strings.SplitAfter(contain3,".")
+				if(strings.Contains(deceimal3[1],"0")!=true){
+					divisible = 7
+					contain4 := fmt.Sprintf("%.1f",l/divisible)
+					deceimal4 := strings.SplitAfter(contain4, ".")
+					if(strings.Contains(deceimal4[1],"0")!=true){
+							//check to see if 1, because 1 is not a prime
 
+							if(i != 1){
+								
 
-//this isnt my code i tried for like 2 hours to get my method to work and even this code doesn't work eaither
-var primenumber bool
-fmt.Println(N)
-	for l:=2;l<103;l++{
-			for i := 2; i<= int(math.Floor(float64(N)/2)); i++{
-				if N%i == 0{
-					primenumber = false
-				}else{
-					primenumber = true
+								oddprimes = append(oddprimes,i)
+							}
+
+					}
+
 				}
-				
 			}
-			if(primenumber == true){
-				fmt.Println(l)
-			}
-		}
-		
+			
 		
 		}
+		l++
+
+}
 	
+	return oddprimes
+}
+
+func decrypter(oddprimes []int, NUMB []int){
+
+var potential []string
+ var potential2 []string
+
+//var last bool
 
 
+//letters:=[]string{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
+//var panagram []string
+for l:=0;l<len(NUMB);l++{
+		
+	f1 := float64(NUMB[l])
 
-func filereader(){
+		for i:=0;i<len(oddprimes);i++{
+				f2 := float64(oddprimes[i])
+
+			f := fmt.Sprintf("%.4f",f1/f2)
+			decimal:=strings.Split(f,".")
+			if(strings.Contains(decimal[1],"0000")==true){
+				potential = append(potential, decimal[0])
+				potential2 = append(potential2, decimal[0])
+			}
+
+		}
+
+		//fmt.Println(oddprimes[i],":",letters[i])
+	}
+	for i:=0;i<len(potential);i++{
+		
+		if(potential[i] != potential2[i+1]||potential[i] != potential2[i+2]){
+			fmt.Println(potential[i])
+		}
+	}
+}
+
+func filereader()(int, []int){
 	fileloop := 0
 	var N[]string
 	var L[]string
@@ -101,6 +166,6 @@ func filereader(){
 		
 		
 	}
-	primefinder(sendN)
+	return sendN,NUMB
 
 }
