@@ -92,20 +92,15 @@ for l:=0;l<len(NUMB);l++{
 			f := fmt.Sprintf("%.4f",f1/f2)
 			decimal:=strings.Split(f,".")
 			if(strings.Contains(decimal[1],"0000")==true){
-				potential = append(potential, decimal[0])
-				potential2 = append(potential2, decimal[0])
+				//ive tried multiple things not sure what todo
+				//it prints out the two prime numbers it equals but not sure where to go from their 
 			}
 
 		}
 
 		//fmt.Println(oddprimes[i],":",letters[i])
 	}
-	for i:=0;i<len(potential);i++{
-		
-		if(potential[i] != potential2[i+1]||potential[i] != potential2[i+2]){
-			fmt.Println(potential[i])
-		}
-	}
+	
 }
 
 func filereader()(int, []int){
