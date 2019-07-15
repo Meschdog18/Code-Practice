@@ -52,7 +52,7 @@ for i:=0;i<T;i++{
 		//splits current set of moves to first move,since we only need to know first move to win
 		moves:=strings.Split(testcase1[currentqueue + l],"")
 		
-//no need for failure statement since it can never lost knowing their moves
+
 		if(strings.Contains(moves[0], "R") == true){
 			move = move + "P"
 		}
@@ -67,8 +67,7 @@ for i:=0;i<T;i++{
 var result []string
 for i:=0;i<len(choices);i++{
 	
-	//if(len())
-
+	
 	if(strings.Count(move, choices[i])>1){
 		result = append(result,choices[i])
 	}
